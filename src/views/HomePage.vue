@@ -1,23 +1,33 @@
 <template>
-  <div v-if="drinks.length" class="container">
-    <left-menu :drinks="drinks" />
-    <content-block :drinks="drinks" />
+  <div v-if="drinks.length" class="home-page container">
+    <menu-list
+      :drinks="drinks"
+      @set-active="setActive"
+    />
+    <content-block
+      :drinks="drinks"
+      :active-drink-id="activeDrinkId"
+    />
   </div>
 </template>
 
 <script>
-import LeftMenu from '@/components/LeftMenu.vue'
+import MenuList from '@/components/MenuList.vue'
 import ContentBlock from '@/components/ContentBlock.vue';
 export default {
   name: "HomePage",
   components: {
-    LeftMenu,
+    MenuList,
     ContentBlock
   },
   data() {
     return {
-      drinks: []
+      drinks: [],
+      activeDrinkId: 178332
     }
+  },
+  mounted() {
+    this.getDrinks();
   },
   methods: {
     async getDrinks() {
@@ -43,14 +53,14 @@ export default {
           return drink
         })
     },
-  },
-  mounted() {
-    this.getDrinks();
+    setActive(id) {
+      this.activeDrinkId = id;
+    }
   }
 };
 </script>
 <style scoped>
-.container {
+.home-page.container {
   display: grid;
   grid-template-columns: 30% 70%;
   padding: 0;

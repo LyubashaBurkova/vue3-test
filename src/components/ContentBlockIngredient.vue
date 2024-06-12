@@ -2,7 +2,7 @@
   <div
     v-for="drinkName in Object.keys(ingredients)"
     :key="drinkName"
-    class="drink-item"
+    class="ingredient-item"
   >
     <span> {{ drinkName }}</span>
     <span> {{ ingredients[drinkName] }}</span>
@@ -11,14 +11,16 @@
  
 <script>
 export default {
-  name: "IngredientItem",
-  props: ['ingredients'],
+  name: "ContentBlockIngredient",
+  props: {
+    ingredients: Object
+  }
 };
 </script>
 <style scoped>
-.drink-item {
+.ingredient-item {
   display: grid;
   grid-template-columns: 20% 80%;
-  margin: 10px 0;
+  margin: 0.6rem 0;
 }
 </style>

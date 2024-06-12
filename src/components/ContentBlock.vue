@@ -1,25 +1,25 @@
 <template>
   <div class="content-block">
-    <h2 class="">
-      {{drinks[0].strDrink}}
+    <h2 class="content-block__header">
+      {{selectedDrink.strDrink}}
     </h2>
-    <div class="container">
+    <div class="content-block__body">
       <div class="text-block">
-        <span class="row">{{drinks[activeDrinkIndex].strCategory}}</span>
-        <span class="row">{{drinks[activeDrinkIndex].strAlcoholic}}</span>
-        <span class="row">{{drinks[activeDrinkIndex].strGlass}}</span>
+        <span class="row">{{selectedDrink.strCategory}}</span>
+        <span class="row">{{selectedDrink.strAlcoholic}}</span>
+        <span class="row">{{selectedDrink.strGlass}}</span>
 
         <h4 class="row">Instructions:</h4>
-        <span class="row">{{drinks[activeDrinkIndex].strInstructions}}</span>
+        <span class="row">{{selectedDrink.strInstructions}}</span>
         
-        <h4 class="row">Ингридиенты</h4>
+        <h4 class="row">Ingredients</h4>
 
-        <ingredient-item
-          :ingredients="drinks[activeDrinkIndex].ingredients"
+        <content-block-ingredient
+          :ingredients="selectedDrink.ingredients"
         />
       </div>
       <div class="img-block">
-        <img :src="drinks[activeDrinkIndex].strImageSource" alt="Картинка напитка">
+        <img :src="selectedDrink.strDrinkThumb" alt="img" />
       </div>
     </div>
     
@@ -27,34 +27,45 @@
 </template>
  
 <script>
-import IngredientItem from "./IngredientItem.vue";
+import ContentBlockIngredient from "./ContentBlockIngredient.vue";
 export default {
   name: "ContentBlock",
   components: {
-    IngredientItem
+    ContentBlockIngredient
   },
-  props: ['drinks'],
-  data() {
-    return {
-      activeDrinkIndex: 0,
+  props: {
+    drinks: Array,
+    activeDrinkId: Number
+  },
+  computed: {
+    selectedDrink() {
+      return this.drinks.find(el => el.idDrink == this.activeDrinkId);
     }
   }
 };
 </script>
 
-<style>
+<style scoped>
 .content-block {
-  padding: 20px;
+  padding: 0.5rem;
 }
 
-.container {
+.content-block__body {
   display: grid;
   grid-template-columns: 70% 30%;
 }
 
-.row {
+.content-block__body .row {
   display: grid;
   grid-template-columns: 100%;
-  margin: 10px 0;
+  margin: 0.8rem 0;
+}
+
+.content-block__body h4 {
+  padding-top: 2rem;
+}
+
+.content-block__body .img-block img {
+  width:100%;
 }
 </style>
