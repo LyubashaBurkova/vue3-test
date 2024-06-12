@@ -1,6 +1,6 @@
 <template>
   <div class="list-item">
-    <span>{{ item.title }}</span>
+    <span>{{ item.strDrink }}</span>
   </div>
 </template>
  

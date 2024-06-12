@@ -1,9 +1,9 @@
 <template>
   <div class="list">
-    <h3>Карта напитков</h3>
+    <h2>Карта напитков</h2>
     <div
-      v-for="item in items"
-      :key="item.title"
+      v-for="item in drinks"
+      :key="item.idDrink"
       @click="setActive"
       class="list-item"
     >
@@ -19,6 +19,7 @@ export default {
   components: {
     MenuItem,
   },
+  props: ['drinks'],
   data() {
     return {
       post: {},
@@ -28,21 +29,6 @@ export default {
         ],
         right: null
     };
-  },
-  methods: {
-    async fetchPosts() {
-      const data = await fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita")
-        .then((response) => {
-            return response.json();
-        });
-        console.log('data', data.drinks)
-    },
-    setActive() {
-
-    }
-  },
-  mounted() {
-    this.fetchPosts();
   }
 };
 </script>
