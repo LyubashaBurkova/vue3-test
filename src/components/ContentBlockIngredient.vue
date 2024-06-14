@@ -1,3 +1,12 @@
+<script>
+export default {
+  name: "ContentBlockIngredient",
+  props: {
+    ingredients: Object
+  }
+};
+</script>
+
 <template>
   <div
     v-for="drinkName in Object.keys(ingredients)"
@@ -8,15 +17,7 @@
     <span> {{ ingredients[drinkName] }}</span>
   </div>
 </template>
- 
-<script>
-export default {
-  name: "ContentBlockIngredient",
-  props: {
-    ingredients: Object
-  }
-};
-</script>
+
 <style scoped>
 .ingredient-item {
   display: grid;

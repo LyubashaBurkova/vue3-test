@@ -1,21 +1,8 @@
-<template>
-  <div v-if="drinks.length" class="home-page container">
-    <menu-list
-      :drinks="drinks"
-      @set-active="setActive"
-    />
-    <content-block
-      :drinks="drinks"
-      :active-drink-id="activeDrinkId"
-    />
-  </div>
-</template>
-
 <script>
 import MenuList from '@/components/MenuList.vue'
 import ContentBlock from '@/components/ContentBlock.vue';
 export default {
-  name: "HomePage",
+  name: "HomeView",
   components: {
     MenuList,
     ContentBlock
@@ -59,6 +46,20 @@ export default {
   }
 };
 </script>
+
+<template>
+  <div v-if="drinks.length" class="home-page container">
+    <menu-list
+      :drinks="drinks"
+      @set-active="setActive"
+    />
+    <content-block
+      :drinks="drinks"
+      :active-drink-id="activeDrinkId"
+    />
+  </div>
+</template>
+
 <style scoped>
 .home-page.container {
   display: grid;

@@ -1,3 +1,22 @@
+<script>
+import ContentBlockIngredient from "./ContentBlockIngredient.vue";
+export default {
+  name: "ContentBlock",
+  components: {
+    ContentBlockIngredient
+  },
+  props: {
+    drinks: Array,
+    activeDrinkId: Number
+  },
+  computed: {
+    selectedDrink() {
+      return this.drinks.find(el => el.idDrink == this.activeDrinkId);
+    }
+  }
+};
+</script>
+
 <template>
   <div class="content-block">
     <h2 class="content-block__header">
@@ -25,25 +44,6 @@
     
   </div>
 </template>
- 
-<script>
-import ContentBlockIngredient from "./ContentBlockIngredient.vue";
-export default {
-  name: "ContentBlock",
-  components: {
-    ContentBlockIngredient
-  },
-  props: {
-    drinks: Array,
-    activeDrinkId: Number
-  },
-  computed: {
-    selectedDrink() {
-      return this.drinks.find(el => el.idDrink == this.activeDrinkId);
-    }
-  }
-};
-</script>
 
 <style scoped>
 .content-block {

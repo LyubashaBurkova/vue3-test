@@ -1,12 +1,3 @@
-<template>
-  <div
-    class="menu__list__item"
-    :class="{'active': activeDrinkId == item.idDrink}"
-  >
-    <span>{{ item.strDrink }}</span>
-  </div>
-</template>
- 
 <script>
 export default {
   name: "MenuItem",
@@ -16,6 +7,16 @@ export default {
   }
 };
 </script>
+
+<template>
+  <div
+    class="menu__list__item"
+    :class="{'active': activeDrinkId == item.idDrink}"
+  >
+    <span>{{ item.strDrink }}</span>
+  </div>
+</template>
+
 <style scoped>
   .menu__list__item {
     padding: 0.7rem 0.3rem;

@@ -1,18 +1,3 @@
-<template>
-  <div class="menu">
-    <img src="https://www.thecocktaildb.com/images/logo.png" />
-    <div class="menu__list">
-      <menu-list-item
-        v-for="item in drinks"
-        :key="item.idDrink"
-        :item="item"
-        :active-drink-id="activeDrinkId"
-        @click="setActive(item)"
-      />
-    </div>
-  </div>
-</template>
-
 <script>
 import MenuListItem from '@/components/MenuListItem.vue';
 export default {
@@ -40,6 +25,22 @@ export default {
   }
 };
 </script>
+
+<template>
+  <div class="menu">
+    <img src="https://www.thecocktaildb.com/images/logo.png" />
+    <div class="menu__list">
+      <menu-list-item
+        v-for="item in drinks"
+        :key="item.idDrink"
+        :item="item"
+        :active-drink-id="activeDrinkId"
+        @click="setActive(item)"
+      />
+    </div>
+  </div>
+</template>
+
 <style scoped>
   .menu {
     padding: 1.2rem;

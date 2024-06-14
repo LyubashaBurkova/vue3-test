@@ -1,15 +1,15 @@
-<template>
-  <home-page />
-</template>
-
 <script>
-import HomePage from './views/HomePage.vue'
+import HomeView from './views/HomeView.vue'
 import './assets/main.css';
 
 export default {
   name: 'App',
   components: {
-    HomePage
+    HomeView
   }
 }
 </script>
+
+<template>
+  <home-view />
+</template>
