@@ -1,20 +1,19 @@
-<script>
-export default {
-  name: "ContentBlockIngredient",
-  props: {
-    ingredients: Object
-  }
-};
+<script setup>
+import { defineProps } from 'vue'
+
+const props = defineProps({
+  ingredients: Object
+})
 </script>
 
 <template>
   <div
-    v-for="drinkName in Object.keys(ingredients)"
-    :key="drinkName"
+    v-for="(value, name) in props.ingredients"
+    :key="value"
     class="ingredient-item"
   >
-    <span> {{ drinkName }}</span>
-    <span> {{ ingredients[drinkName] }}</span>
+    <span> {{ name }}</span>
+    <span> {{ value }}</span>
   </div>
 </template>
 

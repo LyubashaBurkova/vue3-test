@@ -1,19 +1,20 @@
-<script>
-export default {
-  name: "MenuItem",
-  props: {
-    item: Object,
-    activeDrinkId: Number
-  }
-};
+<script setup>
+import { defineProps } from 'vue'
+
+const props = defineProps({
+  item: Object,
+  activeDrinkId: String
+})
+
 </script>
 
 <template>
   <div
+    v-if="props.item"
     class="menu__list__item"
-    :class="{'active': activeDrinkId == item.idDrink}"
+    :class="{'active': activeDrinkId == props.item.idDrink}"
   >
-    <span>{{ item.strDrink }}</span>
+    <span>{{ props.item?.strDrink }}</span>
   </div>
 </template>
 
