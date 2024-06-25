@@ -1,11 +1,11 @@
 <script setup>
-import { ref } from 'vue'
 import { useAsyncState } from "@vueuse/core";
 import axios from 'axios'
+import { useDrinkStore } from '@/stores/drinks'
 import MenuList from '@/components/MenuList.vue'
 import ContentBlock from '@/components/ContentBlock.vue';
 
-const activeDrinkId = ref("11007");
+const drinkStore = useDrinkStore()
 
 const { state } = useAsyncState(
   axios
@@ -21,7 +21,7 @@ const { state } = useAsyncState(
 );
 
 function setActive(id) {
-  activeDrinkId.value = id;
+  drinkStore.setActiveId(id)
 }
 </script>
 
@@ -33,7 +33,7 @@ function setActive(id) {
     />
     <content-block
       :drinks="state.drinks"
-      :selected-drink="state.drinks.find(el => el?.idDrink == activeDrinkId)"
+      :selected-drink="state.drinks.find(el => el?.idDrink == drinkStore.activeDrinkId)"
     />
   </div>
 </template>
